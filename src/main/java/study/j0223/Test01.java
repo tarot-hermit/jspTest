@@ -1,0 +1,38 @@
+package study.j0223;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@SuppressWarnings("serial")
+@WebServlet("/0223/Test01")
+public class Test01 extends HttpServlet {
+	
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		
+		String mid = request.getParameter("mid");
+		String pwd = request.getParameter("pwd");
+		
+		System.out.println("mid : " + mid);
+		System.out.println("pwd : " + pwd);
+		
+		PrintWriter out = response.getWriter();
+		
+		out.println("<p>아이디 : </p>");
+		out.println("<p>비밀번호 : </p>");
+		out.println("<p><a href='" + request.getContextPath() + "/study/0223/test01.jsp'>돌아가기1</a></p>");
+		out.println("<p><a href='" + request.getContextPath() + "/study/0223/test01OK.jsp?mid="+mid+"&pwd="+pwd+"'>돌아가기2</a></p>");
+//		out.println("<p><a href='../study/0223/test01.jsp'>돌아가기</a></p>");
+		
+	}
+	
+}
