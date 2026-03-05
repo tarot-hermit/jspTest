@@ -2,13 +2,15 @@ show tables;
 
 
 
-select * from insa;
+select * from hoewon;
 
-desc insa;
+desc hoewon;
 
-insert into insa (name) values ('씨톰맨') ;
+insert into hoewon (name) values ('씨톰맨') ;
+insert into hoewon (name) values ('비톰맨') ;
 
-update insa set gender = '남자' where idx = 10;
+
+update hoewon set gender = '남자' where idx = 10;
 
 delete from insa where idx = 10;
 
