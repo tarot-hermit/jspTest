@@ -14,19 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 public class EncodingFilter implements Filter {
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)		throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
 		HttpServletRequest req = (HttpServletRequest) request;
 		String uri = req.getRequestURI();
 		
-		if(uri.contains("/css/") && !uri.contains("/js/")) {			
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html; charset=utf-8");
+		if(!uri.contains("/css/") && !uri.contains("/js/")) {
+			request.setCharacterEncoding("utf-8");
+			response.setContentType("text/html; charset=utf-8");
 		}
 		
 		chain.doFilter(request, response);
 		
-		
 	}
-	
+
 }

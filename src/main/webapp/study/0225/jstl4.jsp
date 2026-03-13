@@ -35,13 +35,8 @@
 	  4-1.특정문장의 위치(indexOf()) : - 첫번째 'o'의 위치는? ${fn:indexOf(message, 'o')}<br/>
 	  <pre> (과제)
 	      - 두번째 'o'의 위치?
-	      - message변수안에 들어있는 'o'의 전체 개수와 위치는?
-	      message변수안의 'o'의 전체개수 : ${fn:length(message) - fn:length(fn:replace(message,'o',''))}
-				<c:set var="first" value="${fn:indexOf(message,'o')}" />
-				<c:set var="secondTemp" value="${fn:indexOf(fn:substring(message, first+1, fn:length(message)), 'o')}" />
-				<c:set var="second" value="${secondTemp + first + 1}" />
-
-				두번째 o 위치(1부터) : ${second + 1}
+	      - message변수안에 들어있는 'o'의 전체 개수와 위치는?(forEach활용....)
+	      
 	  </pre>
 	  <%-- 
 	      검색문자열의 뒤쪽 전제 자료 추출 : substringAfter() 
@@ -50,21 +45,20 @@
 	  4-2.- message변수내용중 두번째 'o'의 위치?substringAfter()
 	        ${fn:indexOf(message, fn:substringAfter(fn:substringAfter(message, 'o'), 'o'))-1}<br/>
 	  4-2.- substringBefore() : ${fn:substringBefore(message,'o')}<br/>
-	  <br/>  
+	  <br/>
 	  5-1.문자열분리(split(변수,분리할문자)) : 'o'문자를 기준으로 각각을 분리시켜 출력?<br/>
-	  <c:set var="strs" value="${fn:split(message,'o')}"/>
+	  <c:set var="strs" value="${fn:split(message, 'o')}"/>
 	  <c:forEach var="str" items="${strs}" varStatus="st">
-	  	${st.count}. ${str}<br/>
+	    ${st.count}. ${str}<br/>
 	  </c:forEach>
-	  strs변수안의 'o'문자의 개수는? ${fn:length(strs)-1} 개 <br/>
+	  message변수안의 'o'문자의 개수는? ${fn:length(strs)-1} 개<br/>
 	  <br/>
 	  6.치환(replace())<br/>
-	  str변수안의 'o'를 'O'로 치환? ${fn:replace(message,'o','O') }<br/>
-	  	<br/>
-	  7-1.포함(contains()) : <br/>
-	  'My'를 포함하는가? ${fn:contains(message,'My') }<br/>
-	  'My'를 포함하는가? ${fn:contains(message,'my') }<br/>
-	  
+	  str변수안의 'o'를 'O'로 치환? ${fn:replace(message, 'o', 'O')}<br/>
+	  <br/>
+	  7-1.포함(contains()) :<br/> 
+	  'My'를 포함하는가? ${fn:contains(message, 'My')}<br/>
+	  'my'를 포함하는가? ${fn:contains(message, 'my')}<br/>
 	</div>
 </div>
 <p><br/></p>

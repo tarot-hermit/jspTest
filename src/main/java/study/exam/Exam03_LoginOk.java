@@ -28,6 +28,7 @@ public class Exam03_LoginOk extends HttpServlet {
 		else {
 			HttpSession session = request.getSession();
 			session.setAttribute("sLogin", "OK");
+			session.setAttribute("sMid", mid);
 			
 			String idSave = request.getParameter("idSave")==null ? "off" : "on";
 			Cookie cookieMid = new Cookie("cMid", mid);

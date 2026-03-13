@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-@WebServlet("/0223/Test01")
+@WebServlet("/j0223/Test01")
 public class Test01 extends HttpServlet {
-	
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -27,12 +27,9 @@ public class Test01 extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		out.println("<p>아이디 : </p>");
-		out.println("<p>비밀번호 : </p>");
-		out.println("<p><a href='" + request.getContextPath() + "/study/0223/test01.jsp'>돌아가기1</a></p>");
-		out.println("<p><a href='" + request.getContextPath() + "/study/0223/test01OK.jsp?mid="+mid+"&pwd="+pwd+"'>돌아가기2</a></p>");
-//		out.println("<p><a href='../study/0223/test01.jsp'>돌아가기</a></p>");
-		
+		out.println("<p>아이디 : "+mid+"</p>");
+		out.println("<p>비밀번호 : "+pwd+"</p>");
+		out.println("<p><a href='"+request.getContextPath()+"/study/0223/test01Ok.jsp?mid="+mid+"&pwd="+pwd+"'>test01Ok.jsp</a></p>");
 	}
 	
 }

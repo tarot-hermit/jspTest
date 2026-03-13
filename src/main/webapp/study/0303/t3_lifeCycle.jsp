@@ -4,23 +4,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>t3_lifeCycle.jsp</title>
-	<%@ include file="/include/bs5.jsp" %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>t3_lifeCycle.jsp</title>
+  <%@ include file="/include/bs5.jsp" %>
 </head>
 <body>
 <jsp:include page="/include/header.jsp" />
 <jsp:include page="/include/nav.jsp" />
 <p><br/></p>
 <div class="container">
-	<h2>서블릿 메소드의 LifeCycle(생명주기)</h2>
-	<form action="${ctp}/j0303/T3_LifeCycle">
-	<input type="submit" value="전송" class="btn btn-success"/>
-	
-	</form>
-	
+  <h2>서블릿 메소드이 LifeCycle(생명주기)</h2>
+  <form method="post" action="${ctp}/j0303/T3_lifeCycle">
+  	<input type="submit" value="전송" class="btn btn-success" />
+  </form>
 </div>
+<p><br/></p>
 <jsp:include page="/include/footer.jsp" />
 </body>
 </html>

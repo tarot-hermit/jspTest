@@ -26,9 +26,9 @@ public class Test6 extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		out.println("아이디 : " + mid + "<br/>" );
-		out.println("비밀번호 : " + pwd + "<br/>" );
-		out.println("<a href='study/0220/test6.jsp'>돌아가기</a>" );
+		out.println("아이디 : " + mid + "<br/>");
+		out.println("비밀번호 : " + pwd + "<br/>");
+		out.println("<a href='study/0220/test6.jsp'>돌아가기</a>");
 	}
 
 }

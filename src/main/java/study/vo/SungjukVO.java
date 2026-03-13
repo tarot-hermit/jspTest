@@ -13,6 +13,20 @@ public class SungjukVO {
 	private String grade;
 	private String hostIp;
 	
+	public SungjukVO(String name, String hakbun, int kor, int eng, int mat, int soc, int sci, int tot, double avg, String grade, String hostIp) {
+		this.name = name;
+		this.hakbun = hakbun;
+		this.kor = kor;
+		this.eng = eng;
+		this.mat = mat;
+		this.soc = soc;
+		this.sci = sci;
+		this.tot = tot;
+		this.avg = avg;
+		this.grade = grade;
+		this.hostIp = hostIp;
+	}
+	
 	public String getName() {
 		return name;
 	}

@@ -21,12 +21,12 @@ public class T4_ServerStorage extends HttpServlet {
 		System.out.println("mid : " + mid);
 		
 		// 세션 객체 생성
-		
 		HttpSession session = request.getSession();
-		session.setAttribute("sMid" , mid);
+		session.setAttribute("sMid", mid);
 		
 		// 어플리케이션 객체 생성
-//	ServletContext application = request.getSession().getServletContext();
+		// ServletContext application = request.getSession().getServletContext();
+		// ServletContext application = session.getServletContext();
 		ServletContext application = request.getServletContext();
 		application.setAttribute("aMid", mid);
 		

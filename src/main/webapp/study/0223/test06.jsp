@@ -8,10 +8,8 @@
   <%@ include file="/include/bs5.jsp" %>
 </head>
 <body>
-
-<%@ include file="/include/header.jsp" %>
-<%@ include file="/include/nav.jsp" %>
-
+<jsp:include page="/include/header.jsp" />
+<jsp:include page="/include/nav.jsp" />
 <p><br/></p>
 <div class="container">
   <h2>서버의 환경변수값 확인...</h2>
@@ -25,7 +23,6 @@
   <div>접속 URL : <%=request.getRequestURL() %></div>
   <div>접속 URI : <%=request.getRequestURI() %></div>
 </div>
-
-<%@ include file="/include/footer.jsp" %>
+<jsp:include page="/include/footer.jsp" />
 </body>
 </html>

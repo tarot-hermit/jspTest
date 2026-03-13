@@ -1,8 +1,8 @@
 package study.j0223;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +19,8 @@ public class Test04 extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		String mid = request.getParameter("mid");
-		String pwd = request.getParameter("pwd");
+		String mid = request.getParameter("mid")==null ? "" : request.getParameter("mid");
+		String pwd = request.getParameter("pwd")==null ? "" : request.getParameter("pwd");
 		
 		System.out.println("mid : " + mid);
 		System.out.println("pwd : " + pwd);
@@ -29,10 +29,24 @@ public class Test04 extends HttpServlet {
 		
 		if(!mid.equals("admin") || !pwd.equals("1234")) {
 			response.sendRedirect(request.getContextPath()+"/study/0223/test04.jsp?msg=no");
+			return;
 		}
-		else {
-			response.sendRedirect(request.getContextPath()+"/study/0223/test04Ok.jsp?mid="+mid+"&pwd="+pwd);
-		}
+		
+		// response.sendRedirect(request.getContextPath()+"/study/0223/test04Ok.jsp?mid="+mid+"&pwd="+pwd);
+		
+		// 정상로그인된 회원들에 대한 처리부분.....
+		System.out.println("처리중.......");
+		
+		Test04Service service = new Test04Service();
+		
+		pwd = service.setPwdChange(pwd);
+		
+		//RequestDispatcher dispatcher = request.getRequestDispatcher(request.getContextPath()+"/study/0223/test04Ok.jsp?mid="+mid+"&pwd="+pwd); // 오류(404)
+		
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("/study/0223/test04Ok.jsp?mid="+mid+"&pwd="+pwd);
+		String viewPage = "/study/0223/test04Ok.jsp?mid="+mid+"&pwd="+pwd;
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+		dispatcher.forward(request, response);
 	}
 	
 	

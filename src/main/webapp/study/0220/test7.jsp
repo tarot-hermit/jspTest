@@ -16,24 +16,23 @@
   <form name="myform" method="post" action="<%=request.getContextPath()%>/Test7">
   	<div>아이디 : <input type="text" name="mid" value="hkd1234" class="form-control" /></div>
   	<div>비밀번호 : <input type="password" name="pwd" value="1234" class="form-control" /></div>
-  	<div>성명 :<input type="text" name="name" value="홍길동" class="form-control"/> </div>
-  	<div>나이 :<input type="number" name="age" value="20" class="form-control"/> </div>
-  	<div>성별 :
-  						<input type="radio" name="gender" value="남자"/>남자
-  						<input type="radio" name="gender" value="여자"/>여자
+  	<div>성명 : <input type="text" name="name" value="홍길동" class="form-control" /></div>
+  	<div>나이 : <input type="number" name="age" value="20" class="form-control" /></div>
+  	<div>성별 : 
+  	  <input type="radio" name="gender" value="남자" />남자
+  	  <input type="radio" name="gender" value="여자" checked />여자
   	</div>
-  	
-  	<div>직업 :
-  	<select name="job" class="form-select">
-  			<option selected>학생</option>
-  			<option>회사원</option>
-  			<option>공무원</option>
-  			<option>군인</option>
-  			<option>기타</option>
-  	</select> 
+  	<div>직업 : 
+  	  <select name="job" class="form-select">
+  	    <option selected>학생</option>
+  	    <option>회사원</option>
+  	    <option>공무원</option>
+  	    <option>군인</option>
+  	    <option>기타</option>
+  	  </select>
   	</div>
-  	<div>주소 :<input type="text" name="address" value="서울" class="form-control"/> </div>
-  	<div>자기소개 :<textarea rows="5" cols="60" name="content" class="form-control" ></textarea> </div>
+  	<div>주소 : <input type="text" name="address" value="서울" class="form-control" /></div>
+  	<div>자기소개 : <textarea rows="5" name="content" class="form-control"></textarea></div>
   	<div><input type="submit" value="전송" class="btn btn-success" /></div>
   </form>
 </div>

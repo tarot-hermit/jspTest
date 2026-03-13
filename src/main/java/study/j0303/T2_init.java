@@ -1,4 +1,4 @@
-package filter;
+package study.j0303;
 
 import java.io.IOException;
 
@@ -9,17 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 @SuppressWarnings("serial")
 @WebServlet("/j0303/T2_init")
-public class T2_init extends HttpServlet{
-	
+public class T2_init extends HttpServlet {
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String logoName = getServletContext().getInitParameter("logoName") ;
-		String homeAddress = getServletContext().getInitParameter("homeAddress") ;
-	
+		System.out.println("init통과중...");
+		String logoName = getServletContext().getInitParameter("logoName");
+		String homeAddress = getServletContext().getInitParameter("homeAddress");
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("sLogoName", logoName);
@@ -29,6 +27,6 @@ public class T2_init extends HttpServlet{
 		
 		String viewPage = "/study/0303/t2_init.jsp";
 		request.getRequestDispatcher(viewPage).forward(request, response);
-		
 	}
+	
 }

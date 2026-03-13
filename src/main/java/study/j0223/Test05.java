@@ -1,14 +1,14 @@
 package study.j0223;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import study.vo.TestVO;
 
 @SuppressWarnings("serial")
 @WebServlet("/j0223/Test05")
@@ -20,39 +20,41 @@ public class Test05 extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		String mid = request.getParameter("mid");
-		String pwd = request.getParameter("pwd");
-		String name = request.getParameter("name");
-		String age = request.getParameter("age");
-		String gender = request.getParameter("gender");
-		String job = request.getParameter("job");
-		String address = request.getParameter("address");
-		String content = request.getParameter("content");
+		String mid = request.getParameter("mid")==null ? "" : request.getParameter("mid");
+		String pwd = request.getParameter("pwd")==null ? "" : request.getParameter("pwd");
+		String name = request.getParameter("name")==null ? "" : request.getParameter("name");
+		int age = request.getParameter("age")==null ? 0 : Integer.parseInt(request.getParameter("age"));
+		String gender = request.getParameter("gender")==null ? "" : request.getParameter("gender");
+		String job = request.getParameter("job")==null ? "" : request.getParameter("job");
+		String address = request.getParameter("address")==null ? "" : request.getParameter("address");
+		String content = request.getParameter("content")==null ? "" : request.getParameter("content");
 		
-		PrintWriter out = response.getWriter();
+		// BackEnd 유효성검사처리.....
 		
-//		out.println("<p>mid : " + mid + "</p>");
-//		out.println("<p>pwd : " + pwd + "</p>");
-//		out.println("<p>name : " + name + "</p>");
-//		out.println("<p>age : " + age + "</p>");
-//		out.println("<p>gender : " + gender + "</p>");
-//		out.println("<p>job : " + job + "</p>");
-//		out.println("<p>address : " + address + "</p>");
-//		out.println("<p>content : " + content + "</p>");
-//		out.println("<a href='"+request.getContextPath()+"/study/0223/test05.jsp'>돌아가기</a>");
-//		
+		TestVO vo = new TestVO();
 		
-		response.sendRedirect(
-			  request.getContextPath()
-			  + "/study/0223/test05Ok.jsp?mid=" + mid
-			  + "&pwd=" + pwd
-			  + "&age=" + age
-			  + "&gender=" + URLEncoder.encode(gender, "UTF-8")
-			  + "&job=" + URLEncoder.encode(job, "UTF-8")
-			  + "&address=" + URLEncoder.encode(address, "UTF-8")
-			  + "&content=" + URLEncoder.encode(content, "UTF-8")
-			);
+		vo.setMid(mid);
+		vo.setPwd(pwd);
+		vo.setName(name);
+		vo.setAge(age);
+		vo.setGender(gender);
+		vo.setJob(job);
+		vo.setAddress(address);
+		vo.setContent(content);
 		
+		System.out.println("vo : " + vo);
+		
+		// BackEnd 처리.......
+		
+		//response.sendRedirect(request.getContextPath()+"/study/0223/test05Ok.jsp?vo="+vo);
+		
+		request.setAttribute("vo", vo);
+		
+		String viewPage = "/study/0223/test05Ok.jsp";
+//		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+//		dispatcher.forward(request, response);
+		
+		request.getRequestDispatcher(viewPage).forward(request, response);
 	}
 	
 }

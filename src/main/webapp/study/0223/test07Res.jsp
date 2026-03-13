@@ -1,7 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,51 +16,51 @@
   <table class="table table-hover">
     <tr>
       <th>성명</th>
-      <td><%= request.getAttribute("name") %></td>
+      <td>${vo.name}</td>
     </tr>
     <tr>
       <th>학번</th>
-      <td><%= request.getAttribute("hakbun") %></td>
+      <td>${vo.hakbun}</td>
     </tr>
     <tr>
       <th>국어</th>
-      <td><%= request.getAttribute("kor") %></td>
+      <td>${vo.kor}</td>
     </tr>
     <tr>
       <th>영어</th>
-      <td><%= request.getAttribute("eng") %></td>
+      <td>${vo.eng}</td>
     </tr>
     <tr>
       <th>수학</th>
-      <td><%= request.getAttribute("mat") %></td>
+      <td>${vo.mat}</td>
     </tr>
     <tr>
       <th>사회</th>
-      <td><%= request.getAttribute("soc") %></td>
+      <td>${vo.soc}</td>
     </tr>
     <tr>
       <th>과학</th>
-      <td><%= request.getAttribute("sci") %></td>
+      <td>${vo.sci}</td>
     </tr>
     <tr>
       <th>총점</th>
-      <td><%= request.getAttribute("total") %></td>
+      <td>${vo.tot}</td>
     </tr>
     <tr>
       <th>평균</th>
-      <td><%= request.getAttribute("avg") %></td>
+      <td>${vo.avg}</td>
     </tr>
     <tr>
       <th>학점</th>
-      <td><%= request.getAttribute("grade") %></td>
+      <td>${vo.grade}</td>
     </tr>
     <tr>
       <th>접속IP</th>
-      <td><%= request.getAttribute("ip") %></td>
+      <td>${vo.hostIp}</td>
     </tr>
   </table>
   <hr/>
-  <div><a href="../study/0223/test07.jsp" class="btn btn-success">돌아가기</a></div>
+  <div><a href="<%=request.getContextPath()%>/study/0223/test07.jsp" class="btn btn-success">돌아가기</a></div>
 </div>
 </body>
 </html>

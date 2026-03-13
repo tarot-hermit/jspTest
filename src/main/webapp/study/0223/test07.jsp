@@ -46,6 +46,7 @@
       <input type="submit" value="계산" class="btn btn-success" />
       <input type="reset" value="다시입력" class="btn btn-warning" />
     </div>
+    <input type="hidden" name="hostIp" value="<%=request.getRemoteAddr()%>" />
   </form>
 </div>
 </body>

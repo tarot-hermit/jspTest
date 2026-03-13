@@ -23,6 +23,6 @@
   <hr/>
 </div>
 <p><br/></p>
-<jsp:include page="/include/footer.jsp"  />
+<jsp:include page="/include/footer.jsp" />
 </body>
 </html>

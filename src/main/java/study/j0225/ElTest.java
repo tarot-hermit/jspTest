@@ -35,7 +35,6 @@ public class ElTest extends HttpServlet{
 		request.setAttribute("hobby", str);
 		
 		request.getRequestDispatcher(viewPage).forward(request, response);
-		
 	}
 	
 }
