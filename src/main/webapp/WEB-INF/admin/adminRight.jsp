@@ -187,10 +187,10 @@
 
     <div class="grid">
       <div class="card">
-        <div class="card-label">신규 회원</div>
-        <div class="card-value">${memberCnt}</div>
-        <div class="card-unit">명</div>
-      </div>
+			  <div class="card-label">신규 회원 <span style="font-size:10px; color:var(--muted);">(7일)</span></div>
+			  <div class="card-value">${memberCnt}</div>
+			  <div class="card-unit">명</div>
+			</div>
       <div class="card">
         <div class="card-label">방명록 새글</div>
         <div class="card-value">${guestCnt}</div>

@@ -93,6 +93,16 @@ public class MemberController extends HttpServlet {
 	          command.execute(request, response);
 	          viewPage = "/include/message";
 	      }
+	      else if (com.equals("MemberUpdateForm")) {
+	      	command = new MemberUpdateFormCommand();
+	      	command.execute(request, response);
+	      	viewPage += "memberUpdateForm";
+	      }
+	      else if (com.equals("MemberUpdateOk")) {
+	      	command = new MemberUpdateOkCommand();
+	      	command.execute(request, response);
+	      	viewPage = "/include/message";
+	      }
 	
 	      else if (com.equals("MemberPwdCheckForm")) {
 	          viewPage += "memberPwdCheck";

@@ -61,6 +61,8 @@ public class MemberLoginOkCommand implements MemberInterface {
 		session.setAttribute("sNickName", vo.getNickName());
 		session.setAttribute("sLevel",    vo.getLevel());
 		session.setAttribute("strLevel",  strLevel);
+		session.setAttribute("sPhoto",    vo.getPhoto());   
+		session.setAttribute("sPoint",    vo.getPoint());  
 
 		// ── 로그인 포인트 지급 (+10p, 하루 3회 제한) ───────
 		// ※ setMemberPointPlus 안에서 visitCnt 를 더 이상 건드리지 않음

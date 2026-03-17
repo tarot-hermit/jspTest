@@ -35,7 +35,7 @@ public class MemberDAO {
 	public int setMemberJoinOk(MemberVO vo) {
 		int res = 0;
 		try {
-			sql = "insert into member values (default,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,default,default,default,default,default,default,default)";
+			sql = "insert into member values (default, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, default, default,default,default,default,default,default,default)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getMid());
 			pstmt.setString(2, vo.getPwd());
@@ -473,8 +473,69 @@ public class MemberDAO {
         pstmtClose();
     }
     return res;
-}
+	}
+		public int getNewMemberCnt() {
+	    int cnt = 0;
+	    try {
+	        sql = "SELECT COUNT(*) FROM member WHERE startDate >= DATE_SUB(NOW(), INTERVAL 7 DAY)";
+	        pstmt = conn.prepareStatement(sql);
+	        ResultSet rs = pstmt.executeQuery();
+	        if (rs.next()) cnt = rs.getInt(1);
+	    } catch (SQLException e) {
+	        System.out.println("SQL오류(getNewMemberCnt): " + e.getMessage());
+	    } finally {
+	        pstmtClose();
+	    }
+	    return cnt;
+	}
 
-	
-	
-}
+	// 7일 이내 방명록 새글 카운트
+		public int getNewGuestCnt() {
+		    int cnt = 0;
+		    try {
+		        sql = "SELECT COUNT(*) FROM guest WHERE visitDate >= DATE_SUB(NOW(), INTERVAL 7 DAY)";
+		        pstmt = conn.prepareStatement(sql);
+		        ResultSet rs = pstmt.executeQuery();
+		        if (rs.next()) cnt = rs.getInt(1);
+		    } catch (SQLException e) {
+		        System.out.println("SQL오류(getNewGuestCnt): " + e.getMessage());
+		    } finally {
+		        pstmtClose();
+		    }
+		    return cnt;
+		}
+
+		// 회원정보 수정
+		public int setMemberUpdate(MemberVO vo) {
+			int res = 0;
+			try {
+				sql = "UPDATE member SET nickName=?, name=?, gender=?, birthday=?, tel=?, " +
+			      "address=?, email=?, homePage=?, job=?, hobby=?, content=?, userInfor=?, photo=? " +
+			      "WHERE mid=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1,  vo.getNickName());
+				pstmt.setString(2,  vo.getName());
+				pstmt.setString(3,  vo.getGender());
+				pstmt.setString(4,  vo.getBirthday());
+				pstmt.setString(5,  vo.getTel());
+				pstmt.setString(6,  vo.getAddress());
+				pstmt.setString(7,  vo.getEmail());
+				pstmt.setString(8,  vo.getHomePage());
+				pstmt.setString(9,  vo.getJob());
+				pstmt.setString(10, vo.getHobby());
+				pstmt.setString(11, vo.getContent());
+				pstmt.setString(12, vo.getUserInfor());
+				pstmt.setString(13, vo.getPhoto());
+				pstmt.setString(14, vo.getMid());
+				res = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				System.out.println("SQL문 오류(setMemberUpdate) : " + e.getMessage());
+			} finally {
+				pstmtClose();
+			}
+			return res;
+		}
+
+		
+		
+	}

@@ -198,7 +198,7 @@
 <p><br/></p>
 <div class="container">
   <h2 class="text-center mb-3">회 원 가 입</h2>
-  <form name="myform" method="post" action="MemberJoinOk.mem">
+  <form name="myform" method="post" action="MemberJoinOk.mem" enctype="multipart/form-data">
   	<div class="input-group mb-2">
       <div class="input-group-text bg-secondary-subtle"><label for="mid">아이디</label></div>
       <input type="text" class="form-control" name="mid" id="mid" placeholder="아이디를 입력하세요." required autofocus/>

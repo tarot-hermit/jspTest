@@ -313,7 +313,13 @@
       <span class="dot"></span>
       로그인 중
     </div>
-
+		
+		<div class="text-center mb-3">
+    <img src="${ctp}/images/member/${sPhoto}"
+         style="width:100px; height:100px; border-radius:50%;
+                object-fit:cover; border:3px solid rgba(99,179,237,0.4);"/>
+		</div>
+		
     <div class="nickname">
       안녕하세요, <span>${sNickName}</span>님
     </div>

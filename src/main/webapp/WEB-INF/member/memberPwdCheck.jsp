@@ -12,50 +12,58 @@
     'use strict';
 
     function pwdCheck() {
-      let pwd = document.getElementById("pwd").value.trim();
+    	  let pwd = document.getElementById("pwd").value.trim();
 
-      if (pwd == '') {
-        alert("기존 비밀번호를 입력하세요.");
-        document.getElementById("pwd").focus();
-        return false;
-      }
+    	  if (pwd == '') {
+    	    alert("기존 비밀번호를 입력하세요.");
+    	    document.getElementById("pwd").focus();
+    	    return false;
+    	  }
 
-      let xhr = new XMLHttpRequest();
-      xhr.open("POST", "${ctp}/MemberPwdCheck.mem", true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          let result = xhr.responseText.trim();
-          if (result == "ok") {
-        	  
-            document.getElementById("pwdForm").innerHTML = `
-              <hr/>
-              <div class="input-group mt-2">
-                <div class="input-group-text">새 비밀번호</div>
-                <input type="password" name="newPwd" id="newPwd" class="form-control" placeholder="새 비밀번호 입력" required />
-              </div>
-              <div class="input-group mt-2">
-                <div class="input-group-text">비밀번호 확인</div>
-                <input type="password" name="newPwdChk" id="newPwdChk" class="form-control" placeholder="비밀번호 재입력" required />
-              </div>
-              <div class="mt-2 text-end">
-                <input type="button" value="변경완료" onclick="pwdUpdate()" class="btn btn-primary" />
-              </div>
-            `;
+    	  let xhr = new XMLHttpRequest();
+    	  xhr.open("POST", "${ctp}/MemberPwdCheck.mem", true);
+    	  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    	  xhr.onreadystatechange = function () {
+    	    if (xhr.readyState == 4 && xhr.status == 200) {
+    	      let result = xhr.responseText.trim();
+    	      if (result == "ok") {
 
-            document.getElementById("pwd").readOnly = true;
-          } else {
+    	        // flag 파라미터 확인
+    	        let urlParams = new URLSearchParams(window.location.search);
+    	        let flag = urlParams.get("flag");
 
-        	  document.getElementById("pwdForm").innerHTML =
-              `<div class="text-danger mt-2">❌ 비밀번호가 일치하지 않습니다. 다시 입력해주세요.</div>`;
-            document.getElementById("pwd").value = '';
-            document.getElementById("pwd").focus();
-          }
-        }
-      };
-      xhr.send("pwd=" + encodeURIComponent(pwd));
-    }
+    	        if (flag == "m") {
+    	          // 회원정보 수정 페이지로 이동
+    	          location.href = "${ctp}/MemberUpdateForm.mem";  // 실제 회원정보 수정 URL로 변경
+    	        } else {
+    	          // 기존 비밀번호 변경 폼 표시
+    	          document.getElementById("pwdForm").innerHTML = `
+    	            <hr/>
+    	            <div class="input-group mt-2">
+    	              <div class="input-group-text">새 비밀번호</div>
+    	              <input type="password" name="newPwd" id="newPwd" class="form-control" placeholder="새 비밀번호 입력" required />
+    	            </div>
+    	            <div class="input-group mt-2">
+    	              <div class="input-group-text">비밀번호 확인</div>
+    	              <input type="password" name="newPwdChk" id="newPwdChk" class="form-control" placeholder="비밀번호 재입력" required />
+    	            </div>
+    	            <div class="mt-2 text-end">
+    	              <input type="button" value="변경완료" onclick="pwdUpdate()" class="btn btn-primary" />
+    	            </div>
+    	          `;
+    	          document.getElementById("pwd").readOnly = true;
+    	        }
 
+    	      } else {
+    	        document.getElementById("pwdForm").innerHTML =
+    	          `<div class="text-danger mt-2">❌ 비밀번호가 일치하지 않습니다. 다시 입력해주세요.</div>`;
+    	        document.getElementById("pwd").value = '';
+    	        document.getElementById("pwd").focus();
+    	      }
+    	    }
+    	  };
+    	  xhr.send("pwd=" + encodeURIComponent(pwd));
+    	}
     function pwdUpdate() {
       let newPwd    = document.getElementById("newPwd").value.trim();
       let newPwdChk = document.getElementById("newPwdChk").value.trim();
@@ -86,8 +94,10 @@
 <jsp:include page="/include/nav.jsp" />
 <p><br/></p>
 <div class="container">
-  <h2>비밀번호 변경</h2>
-  <form name="myform" method="post" action="${ctp}/MemberPwdCheckOk.mem">
+	 <c:if test="${param.flag != 'm'}"><h2>비밀번호 변경</h2></c:if>
+	
+	<c:if test="${param.flag == 'm'}"><h2>비밀번호 확인</h2></c:if>
+  <form name="myform" method="post" action="${ctp}/MemberUpdateForm.mem">
     <div class="input-group">
       <div class="input-group-text">기존 비밀번호</div>
       <input type="password" name="pwd" id="pwd" class="form-control" autofocus required />

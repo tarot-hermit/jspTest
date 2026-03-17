@@ -24,10 +24,11 @@ public class AdminMainCommand implements AdminInterface {
        List<MemberVO> deleteMemberList = dao.getDeleteMemberList(0, 10);
 
        // 나머지는 나중에 추가
+       
        request.setAttribute("memberDeleteCnt", memberDeleteCnt);
        request.setAttribute("deleteMemberList", deleteMemberList);
-       request.setAttribute("memberCnt", 0);
-       request.setAttribute("guestCnt", 0);
+       request.setAttribute("memberCnt", dao.getNewMemberCnt());
+       request.setAttribute("guestCnt", dao.getNewGuestCnt());
        request.setAttribute("boardCnt", 0);
    }
 }

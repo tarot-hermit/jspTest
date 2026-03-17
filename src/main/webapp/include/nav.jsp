@@ -68,6 +68,10 @@
 			    	<li><a class="dropdown-item" href="AjaxForm.st">AJax연습</a></li>
 			    	<li><a class="dropdown-item" href="UUIDForm.st">UUID연습</a></li>
 			    	<li><a class="dropdown-item" href="ModalForm.st">Modal연습</a></li>
+			    	<li><a class="dropdown-item" href="FileUploadForm.st">파일업로드연습</a></li>
+			    	<li><a class="dropdown-item" href="FileUploadForm2.st">파일다중업로드연습</a></li>
+			    	<li><a class="dropdown-item" href="FileDownloadForm.st">파일다운로드연습</a></li>
+			    	
 			    </ul>
 			  </div>
 		  </li>
@@ -80,6 +84,7 @@
 			     <c:if test="${sLevel != 1 }"> <li><a class="dropdown-item" href="MemberList.mem">회원리스트</a></li></c:if>
 			      <li><a class="dropdown-item" href="___.do">회원정보수정</a></li>
 			      <li><a class="dropdown-item" href="MemberPwdCheckForm.mem">비밀번호수정</a></li>
+			      <li><a class="dropdown-item" href="MemberPwdCheckForm.mem?flag=m">회원정보수정</a></li>
 			      <li><a class="dropdown-item" href="javascript:memberDeleteCheck()">회원탈퇴</a></li>
 			      <c:if test="${sLevel == 0}"><li><a class="dropdown-item" href="AdminMain.ad">관리자메뉴</a></li></c:if>
 			    </ul>
