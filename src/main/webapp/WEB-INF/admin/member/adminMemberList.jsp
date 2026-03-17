@@ -154,10 +154,10 @@ body { background-color: var(--primary); color: var(--text); font-family: 'Segoe
                                 <td>
                                     <c:choose>
                                         <c:when test="${not empty vo.photo}">
-                                            <img src="${ctp}/upload/${vo.photo}" class="member-photo" alt="사진"/>
+                                            <img src="${ctp}/images/member/${vo.photo}" class="member-photo" alt="사진"/>
                                         </c:when>
                                         <c:otherwise>
-                                            <img src="${ctp}/images/member/image20260311175904.jpg" class="member-photo" alt="기본사진"/>
+                                            <img src="${ctp}/images/member/noimage.jpg" class="member-photo" alt="기본사진"/>
                                         </c:otherwise>
                                     </c:choose>
                                 </td>
@@ -324,7 +324,7 @@ body { background-color: var(--primary); color: var(--text); font-family: 'Segoe
 <script>
 (function () {
     var ctp = '${ctp}';
-    var defaultPhoto = ctp + '/images/member/image20260311175904.jpg';
+    var defaultPhoto = ctp + '/images/member/noimage.jpg';
     var overlay     = document.getElementById('memberModalOverlay');
     var closeBtn    = document.getElementById('modalCloseBtn');
     var footerClose = document.getElementById('modalFooterCloseBtn');
@@ -333,7 +333,7 @@ body { background-color: var(--primary); color: var(--text); font-family: 'Segoe
         var d = row.dataset;
 
         // 사진
-        document.getElementById('modalPhoto').src = d.photo ? ctp + '/upload/' + d.photo : defaultPhoto;
+        document.getElementById('modalPhoto').src = d.photo ? ctp + '/images/member/' + d.photo : defaultPhoto;
 
         // 헤더
         document.getElementById('modalNickname').textContent = d.nickname || '-';

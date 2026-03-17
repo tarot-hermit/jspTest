@@ -143,7 +143,7 @@
             document.body.removeChild(a);
         });
     }
-
+		//선택파일 삭제
     function deleteSelected() {
         const checked = document.querySelectorAll('.fileCheck:checked');
         if (checked.length === 0) {

@@ -324,6 +324,7 @@
         </label>
     	</div>
     </div>
+    <!--회원 사진 -->
     <div class="input-group mb-1">
       <div class="input-group-text bg-secondary-subtle border-secondary-subtle">회원 사진(파일용량:2MByte이내)</div>
       <input type="file" name="fName" id="file" onchange="imgCheck(this)" class="bg-secondary-subtle form-control"/>

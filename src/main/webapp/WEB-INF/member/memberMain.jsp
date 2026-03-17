@@ -313,7 +313,7 @@
       <span class="dot"></span>
       로그인 중
     </div>
-		
+		<!-- 회원 사진  -->
 		<div class="text-center mb-3">
     <img src="${ctp}/images/member/${sPhoto}"
          style="width:100px; height:100px; border-radius:50%;

@@ -6,23 +6,20 @@ import javax.servlet.http.HttpServletResponse;
 import guest.GuestInterface;
 
 public class FileDeleteCommand implements GuestInterface {
-
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
-
-    		String[] deleteFiles = request.getParameterValues("deleteFiles");
-
+        String[] deleteFiles = request.getParameterValues("deleteFiles");
         if (deleteFiles != null && deleteFiles.length > 0) {
             String savePath = request.getServletContext().getRealPath("/images/fileUpload");
-
             for (String fileName : deleteFiles) {
                 if (fileName.contains("..") || fileName.contains("/") || fileName.contains("\\")) {
                     continue;
                 }
                 File file = new File(savePath + File.separator + fileName);
-                if (file.exists()) {
-                    file.delete();
-                }
+                if (file.exists()) file.delete();
+
+                File infoFile = new File(savePath + File.separator + fileName + ".info");
+                if (infoFile.exists()) infoFile.delete();
             }
         }
     }

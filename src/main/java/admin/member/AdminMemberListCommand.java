@@ -28,7 +28,6 @@ public class AdminMemberListCommand implements AdminInterface {
         int curBlock = (currentPage - 1) / scrSize;
         int lastBlock = (totalPage - 1) / scrSize;
 
-        // ✅ 탈퇴 회원 포함 전체 목록
         List<MemberVO> vos = dao.getAdminMemberList(startIndexNo, pageSize);
 
         request.setAttribute("vos", vos);

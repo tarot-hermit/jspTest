@@ -36,6 +36,7 @@ public class FileUpload1OkCommand implements GuestInterface {
         if (savedName == null) {
             errorList.add("파일을 선택해주세요.");
         } else {
+        		//백엔드 지정되지않은 파일 유효성검사
             String ext = savedName.substring(savedName.lastIndexOf(".") + 1).toLowerCase();
             List<String> allowedExt = Arrays.asList("jpg", "jpeg", "gif", "png", "zip", "hwp", "ppt", "pptx", "xls", "xlsx", "doc", "pdf", "txt");
             if (!allowedExt.contains(ext)) {
